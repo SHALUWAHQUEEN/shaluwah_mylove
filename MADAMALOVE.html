@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love for Shaluwah</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee, #ff9a9e);
+            background-size: 200% 200%;
+            animation: backgroundChange 10s ease infinite;
+        }
+
+        @keyframes backgroundChange {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 50% 100%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 50% 0%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .message-box {
+            text-align: center;
+            color: white;
+        }
+
+        .message-box h1 {
+            font-size: 4em;
+            color: white;
+            margin: 0;
+            animation: colorChange 3s ease-in-out infinite;
+        }
+
+        .message-box p {
+            font-size: 1.5em;
+            color: #ffe6e6;
+            animation: flicker 5s infinite;
+        }
+
+        @keyframes colorChange {
+            0% { color: #ff4b5c; }
+            25% { color: #ffb6c1; }
+            50% { color: #f9a8d4; }
+            75% { color: #ffc3a0; }
+            100% { color: #ff4b5c; }
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .heart {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            background-color: red;
+            transform: rotate(-45deg);
+            margin: 20px auto;
+            animation: beat 1s infinite alternate;
+        }
+
+        .heart::before, .heart::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -75px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 75px;
+            top: 0;
+        }
+
+        @keyframes beat {
+            0% { transform: scale(1) rotate(-45deg); }
+            50% { transform: scale(1.1) rotate(-45deg); }
+            100% { transform: scale(1) rotate(-45deg); }
+        }
+
+        #quote {
+            font-size: 1.3em;
+            font-style: italic;
+            color: #fff;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="message-box">
+        <div class="heart"></div>
+        <h1>SHALUWAH</h1>
+        <p>You are the love of my life!</p>
+        <div id="quote">"Love is not about how much you say 'I love you', but how much you prove that it's true."</div>
+    </div>
+
+    <script>
+        // Love quotes that will rotate
+        const quotes = [
+            "\"Love is not about how much you say 'I love you', but how much you prove that it's true.\"",
+            "\"In all the world, there is no heart for me like yours.\"",
+            "\"You are my sun, my moon, and all of my stars.\"",
+            "\"I have found the one whom my soul loves.\"",
+            "\"Every moment with you is a dream come true.\""
+        ];
+
+        let quoteIndex = 0;
+
+        function changeQuote() {
+            const quoteElement = document.getElementById('quote');
+            quoteIndex = (quoteIndex + 1) % quotes.length; // Rotate through quotes
+            quoteElement.innerText = quotes[quoteIndex];
+        }
+
+        // Change the quote every 5 seconds
+        setInterval(changeQuote, 5000);
+
+        // Optional: Add an extra message after a few seconds
+        setTimeout(function() {
+            const messageBox = document.querySelector('.message-box');
+            const newMessage = document.createElement('p');
+            newMessage.innerText = "I love you more than words can express!";
+            newMessage.style.fontSize = '1.5em';
+            newMessage.style.color = '#ffebcd';
+            newMessage.style.animation = 'fadeIn 2s ease-in-out forwards';
+            messageBox.appendChild(newMessage);
+        }, 7000);
+    </script>
+</body>
+</html>
